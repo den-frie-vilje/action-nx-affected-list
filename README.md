@@ -37,7 +37,7 @@ outputs:
 ### Usage
 ``` yaml
       - name: Check for Affected Projects
-        uses: dkhunt27/action-nx-affected-list@v4
+        uses: jhonatanmacazana/action-nx-affected-list@v1
         id: checkForAffected
 
       - if: steps.checkForAffected.outputs.hasAffected == 'true'
