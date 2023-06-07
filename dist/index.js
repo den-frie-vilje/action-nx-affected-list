@@ -148,7 +148,7 @@ function getNxAffected({ base, head, type, workspace }) {
         return [];
     }
     const affected = result
-        .split(' ')
+        .split(', ')
         .map(x => x.trim())
         .filter(x => x.length > 0);
     return affected || [];
