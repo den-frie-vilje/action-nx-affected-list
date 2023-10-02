@@ -33,13 +33,13 @@ const executeNxCommands = ({
 export function getNxAffected({
   base,
   head,
-  type,
+  exclude,
   workspace
 }: GetNxAffectedProps): string[] {
   const args = `${base ? `--base=${base}` : ''} ${head ? `--head=${head}` : ''}`
   const commands = [
-    `./node_modules/.bin/nx print-affected --type=${type} --select=projects ${args}`,
-    `nx print-affected --type=${type} --select=projects ${args}`
+    `./node_modules/.bin/nx show projects --affected --exclude="${exclude}" ${args}`,
+    `nx show projects --affected --exclude="${exclude}" ${args}`
   ]
   const result = executeNxCommands({commands, workspace})
 
@@ -49,7 +49,7 @@ export function getNxAffected({
   }
 
   const affected = result
-    .split(', ')
+    .split('\n')
     .map(x => x.trim())
     .filter(x => x.length > 0)
 
